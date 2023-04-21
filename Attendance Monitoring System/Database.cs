@@ -3,11 +3,11 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
-namespace Bug_Tracker
+namespace Attendance_Monitoring_System
 {
     class Database
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-Mehrael;Initial Catalog=Bug_Tracker;Integrated Security=True");
+        SqlConnection conn = new SqlConnection("Data Source=LAPTOP-Mehrael;Initial Catalog=AttendanceMonitoringSystem;Integrated Security=True");
         SqlCommand cmd = new SqlCommand();
 
         public DataTable read_data(String stmt , string msg)
