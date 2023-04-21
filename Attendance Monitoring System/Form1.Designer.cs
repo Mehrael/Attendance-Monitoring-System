@@ -49,10 +49,19 @@
             this.ConfirmPassword_txt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.AddTeacherToDB_btn = new System.Windows.Forms.Button();
+            this.AddCourses_panel = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.AddCourseToDB_btn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Subject_txt = new System.Windows.Forms.TextBox();
+            this.Teacher_cmbx = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AddTeacher_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.AddCourses_panel.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,6 +112,7 @@
             this.AddTeacher_btn.TabIndex = 1;
             this.AddTeacher_btn.Text = "Add Teacher";
             this.AddTeacher_btn.UseVisualStyleBackColor = true;
+            this.AddTeacher_btn.Click += new System.EventHandler(this.AddTeacher_btn_Click);
             // 
             // AssignTeacherCourse_btn
             // 
@@ -121,6 +131,7 @@
             this.AddCourses_btn.TabIndex = 1;
             this.AddCourses_btn.Text = "Add Courses";
             this.AddCourses_btn.UseVisualStyleBackColor = true;
+            this.AddCourses_btn.Click += new System.EventHandler(this.AddCourses_btn_Click);
             // 
             // AttendanceReport_btn
             // 
@@ -253,6 +264,80 @@
             this.AddTeacherToDB_btn.UseVisualStyleBackColor = true;
             this.AddTeacherToDB_btn.Click += new System.EventHandler(this.AddTeacherToDB_btn_Click);
             // 
+            // AddCourses_panel
+            // 
+            this.AddCourses_panel.Controls.Add(this.groupBox2);
+            this.AddCourses_panel.Location = new System.Drawing.Point(232, 99);
+            this.AddCourses_panel.Name = "AddCourses_panel";
+            this.AddCourses_panel.Size = new System.Drawing.Size(1025, 603);
+            this.AddCourses_panel.TabIndex = 4;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.Teacher_cmbx);
+            this.groupBox2.Controls.Add(this.AddCourseToDB_btn);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.Subject_txt);
+            this.groupBox2.Font = new System.Drawing.Font("High Tower Text", 16.2F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.ForeColor = System.Drawing.Color.Red;
+            this.groupBox2.Location = new System.Drawing.Point(272, 65);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(481, 473);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Add Course";
+            // 
+            // AddCourseToDB_btn
+            // 
+            this.AddCourseToDB_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddCourseToDB_btn.ForeColor = System.Drawing.Color.Black;
+            this.AddCourseToDB_btn.Location = new System.Drawing.Point(133, 381);
+            this.AddCourseToDB_btn.Name = "AddCourseToDB_btn";
+            this.AddCourseToDB_btn.Size = new System.Drawing.Size(214, 61);
+            this.AddCourseToDB_btn.TabIndex = 3;
+            this.AddCourseToDB_btn.Text = "Add";
+            this.AddCourseToDB_btn.UseVisualStyleBackColor = true;
+            this.AddCourseToDB_btn.Click += new System.EventHandler(this.AddCourseToDB_btn_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(90, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 29);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Teacher:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(90, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(108, 29);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Subject:";
+            // 
+            // Subject_txt
+            // 
+            this.Subject_txt.Location = new System.Drawing.Point(95, 109);
+            this.Subject_txt.Name = "Subject_txt";
+            this.Subject_txt.Size = new System.Drawing.Size(289, 39);
+            this.Subject_txt.TabIndex = 0;
+            // 
+            // Teacher_cmbx
+            // 
+            this.Teacher_cmbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Teacher_cmbx.FormattingEnabled = true;
+            this.Teacher_cmbx.Location = new System.Drawing.Point(99, 244);
+            this.Teacher_cmbx.Name = "Teacher_cmbx";
+            this.Teacher_cmbx.Size = new System.Drawing.Size(285, 40);
+            this.Teacher_cmbx.TabIndex = 4;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -268,18 +353,23 @@
             this.Controls.Add(this.AddTeacher_btn);
             this.Controls.Add(this.AddStudents_btn);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.AddCourses_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.AddTeacher_panel.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.AddCourses_panel.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -306,6 +396,13 @@
         private System.Windows.Forms.TextBox ConfirmPassword_txt;
         private System.Windows.Forms.TextBox Password_txt;
         private System.Windows.Forms.TextBox Name_txt;
+        private System.Windows.Forms.Panel AddCourses_panel;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox Teacher_cmbx;
+        private System.Windows.Forms.Button AddCourseToDB_btn;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox Subject_txt;
     }
 }
 
