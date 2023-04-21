@@ -56,17 +56,29 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Subject_txt = new System.Windows.Forms.TextBox();
             this.Teacher_cmbx = new System.Windows.Forms.ComboBox();
+            this.AddStudent_panel = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.AddStudentToDB_btn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.StudentName_txt = new System.Windows.Forms.TextBox();
+            this.SeatNum_txt = new System.Windows.Forms.TextBox();
+            this.Department_cmbx = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AddTeacher_panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.AddCourses_panel.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.AddStudent_panel.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Controls.Add(this.AddStudent_panel);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -103,6 +115,7 @@
             this.AddStudents_btn.TabIndex = 1;
             this.AddStudents_btn.Text = "Add Students";
             this.AddStudents_btn.UseVisualStyleBackColor = true;
+            this.AddStudents_btn.Click += new System.EventHandler(this.AddStudents_btn_Click);
             // 
             // AddTeacher_btn
             // 
@@ -199,6 +212,7 @@
             // Name_txt
             // 
             this.Name_txt.Location = new System.Drawing.Point(95, 109);
+            this.Name_txt.MaxLength = 50;
             this.Name_txt.Name = "Name_txt";
             this.Name_txt.Size = new System.Drawing.Size(289, 39);
             this.Name_txt.TabIndex = 0;
@@ -217,6 +231,7 @@
             // Password_txt
             // 
             this.Password_txt.Location = new System.Drawing.Point(95, 198);
+            this.Password_txt.MaxLength = 50;
             this.Password_txt.Name = "Password_txt";
             this.Password_txt.PasswordChar = '$';
             this.Password_txt.Size = new System.Drawing.Size(289, 39);
@@ -236,6 +251,7 @@
             // ConfirmPassword_txt
             // 
             this.ConfirmPassword_txt.Location = new System.Drawing.Point(95, 288);
+            this.ConfirmPassword_txt.MaxLength = 50;
             this.ConfirmPassword_txt.Name = "ConfirmPassword_txt";
             this.ConfirmPassword_txt.PasswordChar = '$';
             this.ConfirmPassword_txt.Size = new System.Drawing.Size(289, 39);
@@ -325,6 +341,7 @@
             // Subject_txt
             // 
             this.Subject_txt.Location = new System.Drawing.Point(95, 109);
+            this.Subject_txt.MaxLength = 50;
             this.Subject_txt.Name = "Subject_txt";
             this.Subject_txt.Size = new System.Drawing.Size(289, 39);
             this.Subject_txt.TabIndex = 0;
@@ -337,6 +354,110 @@
             this.Teacher_cmbx.Name = "Teacher_cmbx";
             this.Teacher_cmbx.Size = new System.Drawing.Size(285, 40);
             this.Teacher_cmbx.TabIndex = 4;
+            // 
+            // AddStudent_panel
+            // 
+            this.AddStudent_panel.Controls.Add(this.groupBox3);
+            this.AddStudent_panel.Location = new System.Drawing.Point(234, 102);
+            this.AddStudent_panel.Name = "AddStudent_panel";
+            this.AddStudent_panel.Size = new System.Drawing.Size(1028, 603);
+            this.AddStudent_panel.TabIndex = 3;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.Department_cmbx);
+            this.groupBox3.Controls.Add(this.AddStudentToDB_btn);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.SeatNum_txt);
+            this.groupBox3.Controls.Add(this.StudentName_txt);
+            this.groupBox3.Font = new System.Drawing.Font("High Tower Text", 16.2F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.ForeColor = System.Drawing.Color.Red;
+            this.groupBox3.Location = new System.Drawing.Point(276, 50);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(481, 473);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Add Student";
+            // 
+            // AddStudentToDB_btn
+            // 
+            this.AddStudentToDB_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddStudentToDB_btn.ForeColor = System.Drawing.Color.Black;
+            this.AddStudentToDB_btn.Location = new System.Drawing.Point(129, 381);
+            this.AddStudentToDB_btn.Name = "AddStudentToDB_btn";
+            this.AddStudentToDB_btn.Size = new System.Drawing.Size(214, 61);
+            this.AddStudentToDB_btn.TabIndex = 3;
+            this.AddStudentToDB_btn.Text = "Add";
+            this.AddStudentToDB_btn.UseVisualStyleBackColor = true;
+            this.AddStudentToDB_btn.Click += new System.EventHandler(this.AddStudentToDB_btn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(90, 256);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(173, 29);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Seat Number:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(90, 166);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(155, 29);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Department:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(90, 77);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 29);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Name:";
+            // 
+            // StudentName_txt
+            // 
+            this.StudentName_txt.Location = new System.Drawing.Point(95, 109);
+            this.StudentName_txt.MaxLength = 50;
+            this.StudentName_txt.Name = "StudentName_txt";
+            this.StudentName_txt.Size = new System.Drawing.Size(289, 39);
+            this.StudentName_txt.TabIndex = 0;
+            // 
+            // SeatNum_txt
+            // 
+            this.SeatNum_txt.Location = new System.Drawing.Point(95, 288);
+            this.SeatNum_txt.MaxLength = 10;
+            this.SeatNum_txt.Name = "SeatNum_txt";
+            this.SeatNum_txt.Size = new System.Drawing.Size(289, 39);
+            this.SeatNum_txt.TabIndex = 0;
+            // 
+            // Department_cmbx
+            // 
+            this.Department_cmbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Department_cmbx.FormattingEnabled = true;
+            this.Department_cmbx.Items.AddRange(new object[] {
+            "CS",
+            "IS",
+            "SC",
+            "CSYS",
+            "AI",
+            "SWE",
+            "BIO"});
+            this.Department_cmbx.Location = new System.Drawing.Point(95, 205);
+            this.Department_cmbx.Name = "Department_cmbx";
+            this.Department_cmbx.Size = new System.Drawing.Size(289, 40);
+            this.Department_cmbx.TabIndex = 4;
             // 
             // Home
             // 
@@ -370,6 +491,9 @@
             this.AddCourses_panel.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.AddStudent_panel.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -403,6 +527,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox Subject_txt;
+        private System.Windows.Forms.Panel AddStudent_panel;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox Department_cmbx;
+        private System.Windows.Forms.Button AddStudentToDB_btn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox SeatNum_txt;
+        private System.Windows.Forms.TextBox StudentName_txt;
     }
 }
 

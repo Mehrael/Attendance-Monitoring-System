@@ -14,7 +14,7 @@ namespace Attendance_Monitoring_System
 {
     public partial class Home : Form
     {
-        Database db = new Database(); 
+        Database db = new Database();
         DataTable dt = new DataTable();
         public Home()
         {
@@ -36,12 +36,6 @@ namespace Attendance_Monitoring_System
 
             string name = Name_txt.Text;
             string password = "";
-
-            if (name == "")
-            {
-                MessageBox.Show("Enter a name", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                checker = false;
-            }
 
             if (Password_txt.Text == "")
             {
@@ -84,7 +78,20 @@ namespace Attendance_Monitoring_System
                 item.Value = (int)dt.Rows[i][0];
                 Teacher_cmbx.Items.Add(item);
             }
+            ////////////////////////////////////////////////
 
+            //dt.Clear();
+            //dt = db.read_data("SELECT * FROM Teacher", "");
+
+            //Teacher_cmbx.Items.Clear();
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    ComboboxItem item = new ComboboxItem();
+
+            //    item.Text = dt.Rows[i][1].ToString();
+            //    item.Value = (int)dt.Rows[i][0];
+            //    Teacher_cmbx.Items.Add(item);
+            //}
         }
 
         private void AddCourseToDB_btn_Click(object sender, EventArgs e)
@@ -93,13 +100,27 @@ namespace Attendance_Monitoring_System
             string Subject = Subject_txt.Text;
 
             string stmt = "INSERT INTO Courses VALUES ('" + Subject + "'," + TeacherID + ");";
-            //db.execute_data(stmt, "Added successfully");
-            MessageBox.Show(stmt);
+            db.execute_data(stmt, "Added successfully");
         }
 
         private void AddCourses_btn_Click(object sender, EventArgs e)
         {
             AddCourses_panel.BringToFront();
+        }
+
+        private void AddStudentToDB_btn_Click(object sender, EventArgs e)
+        {
+            string name = StudentName_txt.Text;
+            string dep = Department_cmbx.SelectedItem.ToString();
+            string seat = SeatNum_txt.Text;
+
+            string stmt = "INSERT INTO Student VALUES ('" + name + "','" + dep + "','" + seat + "');";
+            db.execute_data(stmt, "Added successfully");
+        }
+
+        private void AddStudents_btn_Click(object sender, EventArgs e)
+        {
+            AddStudent_panel.BringToFront();
         }
     }
 }

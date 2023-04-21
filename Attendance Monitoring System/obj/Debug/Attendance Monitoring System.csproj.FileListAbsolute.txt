@@ -9,3 +9,4 @@ E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Atte
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance Monitoring System.exe
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance Monitoring System.pdb
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance_Monitoring_System.Home.resources
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance_Monitoring_System.Login.resources
