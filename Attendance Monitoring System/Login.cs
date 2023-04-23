@@ -15,7 +15,8 @@ namespace Attendance_Monitoring_System
     {
         Database db = new Database();
         DataTable dt = new DataTable();
-        public static int role = 0; // 1=>admin
+        public static bool role = false; // 1=>admin
+        public static int UserID = 0;  
         public Login()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace Attendance_Monitoring_System
 
             if(name == "Admin" && password == "Admin")
             {
-                role = 1;
+                role = true;
                 Home home = new Home();
                 home.ShowDialog();
                 this.Close();
@@ -38,6 +39,7 @@ namespace Attendance_Monitoring_System
                 dt = db.read_data("SELECT * from Teacher WHERE name = '" + name + "'AND password = '" +password + "'", "");
                 if (dt.Rows.Count > 0)
                 {
+                    UserID = (int)dt.Rows[0][0];
                     Home home = new Home();
                     home.ShowDialog();
                     this.Close();

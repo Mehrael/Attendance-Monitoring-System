@@ -66,34 +66,63 @@ namespace Attendance_Monitoring_System
 
         private void Home_Load(object sender, EventArgs e)
         {
-            dt.Clear();
-            dt = db.read_data("SELECT * FROM Teacher", "");
-
-            Teacher_cmbx.Items.Clear();
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (Login.role)           //Admin
             {
-                ComboboxItem item = new ComboboxItem();
-
-                item.Text = dt.Rows[i][1].ToString();
-                item.Value = (int)dt.Rows[i][0];
-                Teacher_cmbx.Items.Add(item);
+                ViewCourses_btn.Enabled = false;
+                AddStudentToCourse_btn.Enabled = false;
+                TakeAttendance_btn.Enabled = false;
+                AttendanceReport_btn.Enabled = false;
             }
-            ////////////////////////////////////////////////
+            else
+            {
+                AddStudents_btn.Visible = false;
+                AddCourses_btn.Visible = false;
+                AddTeacher_btn.Visible = false;
+                AssignTeacherCourse_btn.Visible = false;
 
-            //dt.Clear();
-            //dt = db.read_data("SELECT * FROM Teacher", "");
+                dt.Clear();
+                dt = db.read_data("SELECT * FROM Teacher", "");
 
-            //Teacher_cmbx.Items.Clear();
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    ComboboxItem item = new ComboboxItem();
+                Teacher_cmbx.Items.Clear();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
 
-            //    item.Text = dt.Rows[i][1].ToString();
-            //    item.Value = (int)dt.Rows[i][0];
-            //    Teacher_cmbx.Items.Add(item);
-            //}
+                    item.Text = dt.Rows[i][1].ToString();
+                    item.Value = (int)dt.Rows[i][0];
+                    Teacher_cmbx.Items.Add(item);
+                }
+                ////////////////////////////////////////////////
+
+                dt.Clear();
+                dt = db.read_data("SELECT * FROM Courses WHERE TeacherID = " + Login.UserID, "");
+
+                Teacher_courses_cmbx.Items.Clear();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+
+                    item.Text = dt.Rows[i][1].ToString();
+                    item.Value = (int)dt.Rows[i][0];
+                    Teacher_courses_cmbx.Items.Add(item);
+                }
+                ////////////////////////////////////////////////
+
+                dt.Clear();
+                dt = db.read_data("SELECT * FROM Student", "");
+
+                Student_course_cmbx.Items.Clear();
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+
+                    item.Text = dt.Rows[i][1].ToString();
+                    item.Value = (int)dt.Rows[i][0];
+                    Student_course_cmbx.Items.Add(item);
+                }
+
+            }
         }
-
         private void AddCourseToDB_btn_Click(object sender, EventArgs e)
         {
             string TeacherID = (Teacher_cmbx.SelectedItem as ComboboxItem).Value.ToString();
@@ -121,6 +150,24 @@ namespace Attendance_Monitoring_System
         private void AddStudents_btn_Click(object sender, EventArgs e)
         {
             AddStudent_panel.BringToFront();
+        }
+
+        private void Add_Student_Course_btn_Click(object sender, EventArgs e)
+        {
+            string courseID = (Teacher_courses_cmbx.SelectedItem as ComboboxItem).Value.ToString();
+            string studentID = (Student_course_cmbx.SelectedItem as ComboboxItem).Value.ToString();
+
+            string stmt = "SELECT * FROM StudentCourses WHERE CourseID = " + courseID + "AND studentID = " + studentID;
+            DataTable tbl = new DataTable();
+            tbl = db.read_data(stmt, "");
+
+            if(tbl.Rows.Count > 0)
+                MessageBox.Show("This student already enrolled in this course","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            else
+            {
+                stmt = "INSERT INTO StudentCourses VALUES(" + studentID + "," + courseID + ")";
+                db.execute_data(stmt, "Added Successfully");
+            }
         }
     }
 }
