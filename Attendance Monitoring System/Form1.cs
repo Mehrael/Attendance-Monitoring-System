@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Attendance_Monitoring_System
 {
@@ -113,6 +109,7 @@ namespace Attendance_Monitoring_System
 
                 Teacher_courses_cmbx.Items.Clear();
                 course_name_cmbx.Items.Clear();
+                Course_view_attendance_cmbx.Items.Clear();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     lst.Add(new courses()
@@ -127,6 +124,7 @@ namespace Attendance_Monitoring_System
                     item.Value = (int)dt.Rows[i][0];
                     Teacher_courses_cmbx.Items.Add(item);
                     course_name_cmbx.Items.Add(item);
+                    Course_view_attendance_cmbx.Items.Add(item);
                 }
                 BindingSource bs = new BindingSource();
                 bs.DataSource = lst;
@@ -236,10 +234,10 @@ namespace Attendance_Monitoring_System
             Attendance_dataGridView.Columns["id"].HeaderText = "#";
             Attendance_dataGridView.Columns["id"].ReadOnly = true;
 
-            Attendance_dataGridView.Columns["student_name"].HeaderText = "Student"; 
+            Attendance_dataGridView.Columns["student_name"].HeaderText = "Student";
             Attendance_dataGridView.Columns["student_name"].ReadOnly = true;
 
-            Attendance_dataGridView.Columns["seatNum"].HeaderText = "Seat Num"; 
+            Attendance_dataGridView.Columns["seatNum"].HeaderText = "Seat Num";
             Attendance_dataGridView.Columns["seatNum"].ReadOnly = true;
 
             Attendance_dataGridView.Columns["attended"].HeaderText = "";
@@ -261,9 +259,9 @@ namespace Attendance_Monitoring_System
                 if ((bool)Attendance_dataGridView.Rows[i].Cells["attended"].Value)
                     attended = "1";
                 else
-                    attended= "0";
+                    attended = "0";
 
-                stmt = "INSERT INTO Attendance (date, CourseID, StudentID, Attended) VALUES ('"+date+"',"+courseID+","+studentID+","+attended+");";
+                stmt = "INSERT INTO Attendance (date, CourseID, StudentID, Attended) VALUES ('" + date + "'," + courseID + "," + studentID + "," + attended + ");";
 
                 if (db.execute_data(stmt, ""))
                     good = true;
@@ -273,6 +271,93 @@ namespace Attendance_Monitoring_System
 
             if (good)
                 MessageBox.Show("Data Saved");
+        }
+
+        private void Course_view_attendance_cmbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable tbl = new DataTable();
+
+            string date = dateTimePicker.Value.ToString("yyyy-MM-dd");
+
+            string query = "SELECT s.name, s.seat_number, a.attended FROM Student s JOIN Attendance a ON s.id = a.StudentID WHERE a.CourseID = " + (Course_view_attendance_cmbx.SelectedItem as ComboboxItem).Value.ToString() + " AND a.date = '" + date + "'";
+            tbl = db.read_data(query, "");
+
+            List<attendance> lst = new List<attendance>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                lst.Add(new attendance()
+                {
+                    actual_id = 0,
+                    id = i + 1,
+                    student_name = tbl.Rows[i][0].ToString(),
+                    seatNum = tbl.Rows[i][1].ToString(),
+                    attended = (bool)tbl.Rows[i][2],
+                });
+            }
+            BindingSource bs = new BindingSource();
+            bs.DataSource = lst;
+            ViewAttendance_dataGridView.DataSource = bs;
+            ViewAttendance_dataGridView.Columns["actual_id"].Visible = false;
+
+            ViewAttendance_dataGridView.Columns["id"].HeaderText = "#";
+            ViewAttendance_dataGridView.Columns["id"].ReadOnly = true;
+
+            ViewAttendance_dataGridView.Columns["student_name"].HeaderText = "Student";
+            ViewAttendance_dataGridView.Columns["student_name"].ReadOnly = true;
+
+            ViewAttendance_dataGridView.Columns["seatNum"].HeaderText = "Seat Num";
+            ViewAttendance_dataGridView.Columns["seatNum"].ReadOnly = true;
+
+            ViewAttendance_dataGridView.Columns["attended"].HeaderText = "";
+            ViewAttendance_dataGridView.Columns["attended"].ReadOnly = true;
+        }
+
+        private void AttendanceReport_btn_Click(object sender, EventArgs e)
+        {
+            Attendance_Report_panel.BringToFront();
+        }
+
+        private void Save_as_pdf_btn_Click(object sender, EventArgs e)
+        {
+            string date = dateTimePicker.Value.ToString("yyyy-MM-dd");
+
+            Document doc = new Document();
+
+            PdfWriter.GetInstance(doc, new FileStream((Course_view_attendance_cmbx.SelectedItem as ComboboxItem).Text.ToString() + " " + date + " Attendance.pdf", FileMode.Create));
+
+            doc.Open();
+            Paragraph title = new Paragraph((Course_view_attendance_cmbx.SelectedItem as ComboboxItem).Text.ToString() + " " + date + " Attendance Report\n\n", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 20f, iTextSharp.text.Font.BOLD));
+
+            title.Alignment = Element.ALIGN_CENTER;
+
+            doc.Add(title);
+
+            PdfPTable table = new PdfPTable(ViewAttendance_dataGridView.Columns.Count-1);
+
+            foreach (DataGridViewColumn column in ViewAttendance_dataGridView.Columns)
+            {
+                if (column.HeaderText == "actual_id")
+                    continue;
+
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                table.AddCell(cell);
+            }
+
+            foreach (DataGridViewRow row in ViewAttendance_dataGridView.Rows)
+            {
+                int cellIndex = 0;
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if(cellIndex!=0)
+                        table.AddCell(cell.Value.ToString());
+                    cellIndex++;
+                }
+            }
+
+            doc.Add(table);
+            doc.Close();
+
+            MessageBox.Show("PDF Saved");
         }
     }
 }

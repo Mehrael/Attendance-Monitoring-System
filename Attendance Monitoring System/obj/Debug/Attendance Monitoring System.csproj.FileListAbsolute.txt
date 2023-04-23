@@ -10,3 +10,13 @@ E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Atte
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance Monitoring System.pdb
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance_Monitoring_System.Home.resources
 E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance_Monitoring_System.Login.resources
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\PdfSharp.Charting.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\PdfSharp.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\PdfSharp.xml
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\PdfSharp.Charting.xml
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\de\PdfSharp.resources.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\de\PdfSharp.Charting.resources.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\obj\Debug\Attendance Monitoring System.csproj.CopyComplete
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\BouncyCastle.Crypto.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\itextsharp.dll
+E:\MehraelAshraf\Career\SYNC Internship\Task 3\Attendance Monitoring System\Attendance Monitoring System\bin\Debug\itextsharp.xml

@@ -80,6 +80,12 @@
             this.course_name_cmbx = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Save_attendance_btn = new System.Windows.Forms.Button();
+            this.Attendance_Report_panel = new System.Windows.Forms.Panel();
+            this.Save_as_pdf_btn = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Course_view_attendance_cmbx = new System.Windows.Forms.ComboBox();
+            this.ViewAttendance_dataGridView = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AddStudentCourse_panel.SuspendLayout();
@@ -94,6 +100,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.View_courses_dataGridView)).BeginInit();
             this.Take_attendance_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Attendance_dataGridView)).BeginInit();
+            this.Attendance_Report_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewAttendance_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -368,6 +376,7 @@
             this.AttendanceReport_btn.TabIndex = 1;
             this.AttendanceReport_btn.Text = "Attendance Report";
             this.AttendanceReport_btn.UseVisualStyleBackColor = true;
+            this.AttendanceReport_btn.Click += new System.EventHandler(this.AttendanceReport_btn_Click);
             // 
             // AddStudentToCourse_btn
             // 
@@ -672,11 +681,77 @@
             this.Save_attendance_btn.UseVisualStyleBackColor = true;
             this.Save_attendance_btn.Click += new System.EventHandler(this.Save_attendance_btn_Click);
             // 
+            // Attendance_Report_panel
+            // 
+            this.Attendance_Report_panel.Controls.Add(this.dateTimePicker);
+            this.Attendance_Report_panel.Controls.Add(this.ViewAttendance_dataGridView);
+            this.Attendance_Report_panel.Controls.Add(this.Save_as_pdf_btn);
+            this.Attendance_Report_panel.Controls.Add(this.label14);
+            this.Attendance_Report_panel.Controls.Add(this.Course_view_attendance_cmbx);
+            this.Attendance_Report_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Attendance_Report_panel.Location = new System.Drawing.Point(232, 99);
+            this.Attendance_Report_panel.Name = "Attendance_Report_panel";
+            this.Attendance_Report_panel.Size = new System.Drawing.Size(1028, 603);
+            this.Attendance_Report_panel.TabIndex = 8;
+            // 
+            // Save_as_pdf_btn
+            // 
+            this.Save_as_pdf_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save_as_pdf_btn.ForeColor = System.Drawing.Color.Black;
+            this.Save_as_pdf_btn.Location = new System.Drawing.Point(785, 547);
+            this.Save_as_pdf_btn.Name = "Save_as_pdf_btn";
+            this.Save_as_pdf_btn.Size = new System.Drawing.Size(182, 44);
+            this.Save_as_pdf_btn.TabIndex = 7;
+            this.Save_as_pdf_btn.Text = "Save as PDF";
+            this.Save_as_pdf_btn.UseVisualStyleBackColor = true;
+            this.Save_as_pdf_btn.Click += new System.EventHandler(this.Save_as_pdf_btn_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(39, 44);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 25);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Course:";
+            // 
+            // Course_view_attendance_cmbx
+            // 
+            this.Course_view_attendance_cmbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Course_view_attendance_cmbx.FormattingEnabled = true;
+            this.Course_view_attendance_cmbx.Location = new System.Drawing.Point(134, 39);
+            this.Course_view_attendance_cmbx.Name = "Course_view_attendance_cmbx";
+            this.Course_view_attendance_cmbx.Size = new System.Drawing.Size(282, 33);
+            this.Course_view_attendance_cmbx.TabIndex = 5;
+            this.Course_view_attendance_cmbx.SelectedIndexChanged += new System.EventHandler(this.Course_view_attendance_cmbx_SelectedIndexChanged);
+            // 
+            // ViewAttendance_dataGridView
+            // 
+            this.ViewAttendance_dataGridView.AllowUserToAddRows = false;
+            this.ViewAttendance_dataGridView.AllowUserToDeleteRows = false;
+            this.ViewAttendance_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ViewAttendance_dataGridView.Location = new System.Drawing.Point(44, 94);
+            this.ViewAttendance_dataGridView.Name = "ViewAttendance_dataGridView";
+            this.ViewAttendance_dataGridView.RowHeadersWidth = 51;
+            this.ViewAttendance_dataGridView.RowTemplate.Height = 24;
+            this.ViewAttendance_dataGridView.Size = new System.Drawing.Size(937, 441);
+            this.ViewAttendance_dataGridView.TabIndex = 8;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(553, 43);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(414, 30);
+            this.dateTimePicker.TabIndex = 9;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1260, 702);
+            this.Controls.Add(this.Attendance_Report_panel);
             this.Controls.Add(this.Take_attendance_panel);
             this.Controls.Add(this.AddStudent_panel);
             this.Controls.Add(this.panel1);
@@ -720,6 +795,9 @@
             this.Take_attendance_panel.ResumeLayout(false);
             this.Take_attendance_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Attendance_dataGridView)).EndInit();
+            this.Attendance_Report_panel.ResumeLayout(false);
+            this.Attendance_Report_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ViewAttendance_dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -777,6 +855,12 @@
         private System.Windows.Forms.ComboBox course_name_cmbx;
         private System.Windows.Forms.DataGridView Attendance_dataGridView;
         private System.Windows.Forms.Button Save_attendance_btn;
+        private System.Windows.Forms.Panel Attendance_Report_panel;
+        private System.Windows.Forms.DataGridView ViewAttendance_dataGridView;
+        private System.Windows.Forms.Button Save_as_pdf_btn;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox Course_view_attendance_cmbx;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
 
