@@ -30,6 +30,19 @@ namespace Attendance_Monitoring_System
                 return Text;
             }
         }
+        public class courses
+        {
+            public int id { get; set; }
+            public string name { get; set; }
+        }
+        public class attendance
+        {
+            public int actual_id { get; set; }
+            public int id { get; set; }
+            public string seatNum { get; set; }
+            public string student_name { get; set; }
+            public bool attended { get; set; }
+        }
         private void AddTeacherToDB_btn_Click(object sender, EventArgs e)
         {
             bool checker = true;
@@ -93,19 +106,31 @@ namespace Attendance_Monitoring_System
                     Teacher_cmbx.Items.Add(item);
                 }
                 ////////////////////////////////////////////////
+                List<courses> lst = new List<courses>();
 
                 dt.Clear();
                 dt = db.read_data("SELECT * FROM Courses WHERE TeacherID = " + Login.UserID, "");
 
                 Teacher_courses_cmbx.Items.Clear();
+                course_name_cmbx.Items.Clear();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    lst.Add(new courses()
+                    {
+                        id = i + 1,
+                        name = dt.Rows[i][1].ToString(),
+                    });
+
                     ComboboxItem item = new ComboboxItem();
 
                     item.Text = dt.Rows[i][1].ToString();
                     item.Value = (int)dt.Rows[i][0];
                     Teacher_courses_cmbx.Items.Add(item);
+                    course_name_cmbx.Items.Add(item);
                 }
+                BindingSource bs = new BindingSource();
+                bs.DataSource = lst;
+                View_courses_dataGridView.DataSource = bs;
                 ////////////////////////////////////////////////
 
                 dt.Clear();
@@ -120,7 +145,6 @@ namespace Attendance_Monitoring_System
                     item.Value = (int)dt.Rows[i][0];
                     Student_course_cmbx.Items.Add(item);
                 }
-
             }
         }
         private void AddCourseToDB_btn_Click(object sender, EventArgs e)
@@ -161,13 +185,94 @@ namespace Attendance_Monitoring_System
             DataTable tbl = new DataTable();
             tbl = db.read_data(stmt, "");
 
-            if(tbl.Rows.Count > 0)
-                MessageBox.Show("This student already enrolled in this course","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            if (tbl.Rows.Count > 0)
+                MessageBox.Show("This student already enrolled in this course", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             else
             {
                 stmt = "INSERT INTO StudentCourses VALUES(" + studentID + "," + courseID + ")";
                 db.execute_data(stmt, "Added Successfully");
             }
+        }
+
+        private void AddStudentToCourse_btn_Click(object sender, EventArgs e)
+        {
+            AddStudentCourse_panel.BringToFront();
+        }
+
+        private void ViewCourses_btn_Click(object sender, EventArgs e)
+        {
+            ViewCourses_panel.BringToFront();
+        }
+
+        private void TakeAttendance_btn_Click(object sender, EventArgs e)
+        {
+            Take_attendance_panel.BringToFront();
+        }
+
+        private void course_name_cmbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable tbl = new DataTable();
+
+            string query = "SELECT s.id, s.name, s.department, s.seat_number FROM Student s JOIN Attendance a ON s.id = a.StudentID WHERE a.CourseID = " + (course_name_cmbx.SelectedItem as ComboboxItem).Value.ToString() + ";";
+            tbl = db.read_data(query, "");
+
+            List<attendance> lst = new List<attendance>();
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                lst.Add(new attendance()
+                {
+                    actual_id = (int)tbl.Rows[i][0],
+                    id = i + 1,
+                    student_name = tbl.Rows[i][1].ToString(),
+                    seatNum = tbl.Rows[i][3].ToString(),
+                    attended = false
+                });
+            }
+            BindingSource bs = new BindingSource();
+            bs.DataSource = lst;
+            Attendance_dataGridView.DataSource = bs;
+            Attendance_dataGridView.Columns["actual_id"].Visible = false;
+
+            Attendance_dataGridView.Columns["id"].HeaderText = "#";
+            Attendance_dataGridView.Columns["id"].ReadOnly = true;
+
+            Attendance_dataGridView.Columns["student_name"].HeaderText = "Student"; 
+            Attendance_dataGridView.Columns["student_name"].ReadOnly = true;
+
+            Attendance_dataGridView.Columns["seatNum"].HeaderText = "Seat Num"; 
+            Attendance_dataGridView.Columns["seatNum"].ReadOnly = true;
+
+            Attendance_dataGridView.Columns["attended"].HeaderText = "";
+        }
+
+        private void Save_attendance_btn_Click(object sender, EventArgs e)
+        {
+            string stmt;
+            bool good = false;
+            string courseID = (course_name_cmbx.SelectedItem as ComboboxItem).Value.ToString();
+
+            DateTime today = DateTime.UtcNow.Date;
+            string date = today.ToString("yyyy-MM-dd");
+
+            for (int i = 0; i < Attendance_dataGridView.Rows.Count; i++)
+            {
+                string studentID = Attendance_dataGridView.Rows[i].Cells["actual_id"].Value.ToString();
+                string attended = "";
+                if ((bool)Attendance_dataGridView.Rows[i].Cells["attended"].Value)
+                    attended = "1";
+                else
+                    attended= "0";
+
+                stmt = "INSERT INTO Attendance (date, CourseID, StudentID, Attended) VALUES ('"+date+"',"+courseID+","+studentID+","+attended+");";
+
+                if (db.execute_data(stmt, ""))
+                    good = true;
+                else
+                    good = false;
+            }
+
+            if (good)
+                MessageBox.Show("Data Saved");
         }
     }
 }
