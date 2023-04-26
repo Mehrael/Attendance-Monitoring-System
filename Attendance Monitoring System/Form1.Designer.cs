@@ -50,7 +50,6 @@
             this.StudentName_txt = new System.Windows.Forms.TextBox();
             this.AddStudents_btn = new System.Windows.Forms.Button();
             this.AddTeacher_btn = new System.Windows.Forms.Button();
-            this.AssignTeacherCourse_btn = new System.Windows.Forms.Button();
             this.AddCourses_btn = new System.Windows.Forms.Button();
             this.AttendanceReport_btn = new System.Windows.Forms.Button();
             this.AddStudentToCourse_btn = new System.Windows.Forms.Button();
@@ -73,19 +72,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.Subject_txt = new System.Windows.Forms.TextBox();
             this.ViewCourses_panel = new System.Windows.Forms.Panel();
-            this.View_courses_dataGridView = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
+            this.View_courses_dataGridView = new System.Windows.Forms.DataGridView();
             this.Take_attendance_panel = new System.Windows.Forms.Panel();
-            this.Attendance_dataGridView = new System.Windows.Forms.DataGridView();
-            this.course_name_cmbx = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.Save_attendance_btn = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.course_name_cmbx = new System.Windows.Forms.ComboBox();
+            this.Attendance_dataGridView = new System.Windows.Forms.DataGridView();
             this.Attendance_Report_panel = new System.Windows.Forms.Panel();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ViewAttendance_dataGridView = new System.Windows.Forms.DataGridView();
             this.Save_as_pdf_btn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.Course_view_attendance_cmbx = new System.Windows.Forms.ComboBox();
-            this.ViewAttendance_dataGridView = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.AddStudentCourse_panel.SuspendLayout();
@@ -102,6 +103,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Attendance_dataGridView)).BeginInit();
             this.Attendance_Report_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewAttendance_dataGridView)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -327,7 +330,7 @@
             // AddStudents_btn
             // 
             this.AddStudents_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddStudents_btn.Location = new System.Drawing.Point(12, 534);
+            this.AddStudents_btn.Location = new System.Drawing.Point(12, 629);
             this.AddStudents_btn.Name = "AddStudents_btn";
             this.AddStudents_btn.Size = new System.Drawing.Size(214, 61);
             this.AddStudents_btn.TabIndex = 1;
@@ -338,7 +341,7 @@
             // AddTeacher_btn
             // 
             this.AddTeacher_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddTeacher_btn.Location = new System.Drawing.Point(12, 400);
+            this.AddTeacher_btn.Location = new System.Drawing.Point(12, 458);
             this.AddTeacher_btn.Name = "AddTeacher_btn";
             this.AddTeacher_btn.Size = new System.Drawing.Size(214, 61);
             this.AddTeacher_btn.TabIndex = 1;
@@ -346,20 +349,10 @@
             this.AddTeacher_btn.UseVisualStyleBackColor = true;
             this.AddTeacher_btn.Click += new System.EventHandler(this.AddTeacher_btn_Click);
             // 
-            // AssignTeacherCourse_btn
-            // 
-            this.AssignTeacherCourse_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AssignTeacherCourse_btn.Location = new System.Drawing.Point(12, 601);
-            this.AssignTeacherCourse_btn.Name = "AssignTeacherCourse_btn";
-            this.AssignTeacherCourse_btn.Size = new System.Drawing.Size(214, 61);
-            this.AssignTeacherCourse_btn.TabIndex = 1;
-            this.AssignTeacherCourse_btn.Text = "Assign teacher to a course";
-            this.AssignTeacherCourse_btn.UseVisualStyleBackColor = true;
-            // 
             // AddCourses_btn
             // 
             this.AddCourses_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCourses_btn.Location = new System.Drawing.Point(12, 467);
+            this.AddCourses_btn.Location = new System.Drawing.Point(12, 546);
             this.AddCourses_btn.Name = "AddCourses_btn";
             this.AddCourses_btn.Size = new System.Drawing.Size(214, 61);
             this.AddCourses_btn.TabIndex = 1;
@@ -370,7 +363,7 @@
             // AttendanceReport_btn
             // 
             this.AttendanceReport_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttendanceReport_btn.Location = new System.Drawing.Point(12, 333);
+            this.AttendanceReport_btn.Location = new System.Drawing.Point(12, 368);
             this.AttendanceReport_btn.Name = "AttendanceReport_btn";
             this.AttendanceReport_btn.Size = new System.Drawing.Size(214, 61);
             this.AttendanceReport_btn.TabIndex = 1;
@@ -381,7 +374,7 @@
             // AddStudentToCourse_btn
             // 
             this.AddStudentToCourse_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddStudentToCourse_btn.Location = new System.Drawing.Point(12, 199);
+            this.AddStudentToCourse_btn.Location = new System.Drawing.Point(12, 193);
             this.AddStudentToCourse_btn.Name = "AddStudentToCourse_btn";
             this.AddStudentToCourse_btn.Size = new System.Drawing.Size(214, 61);
             this.AddStudentToCourse_btn.TabIndex = 1;
@@ -392,7 +385,7 @@
             // ViewCourses_btn
             // 
             this.ViewCourses_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewCourses_btn.Location = new System.Drawing.Point(12, 132);
+            this.ViewCourses_btn.Location = new System.Drawing.Point(12, 111);
             this.ViewCourses_btn.Name = "ViewCourses_btn";
             this.ViewCourses_btn.Size = new System.Drawing.Size(214, 61);
             this.ViewCourses_btn.TabIndex = 1;
@@ -403,7 +396,7 @@
             // TakeAttendance_btn
             // 
             this.TakeAttendance_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TakeAttendance_btn.Location = new System.Drawing.Point(12, 266);
+            this.TakeAttendance_btn.Location = new System.Drawing.Point(12, 279);
             this.TakeAttendance_btn.Name = "TakeAttendance_btn";
             this.TakeAttendance_btn.Size = new System.Drawing.Size(214, 61);
             this.TakeAttendance_btn.TabIndex = 1;
@@ -600,6 +593,17 @@
             this.ViewCourses_panel.Size = new System.Drawing.Size(1028, 603);
             this.ViewCourses_panel.TabIndex = 6;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(56, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(210, 36);
+            this.label12.TabIndex = 3;
+            this.label12.Text = "Your Courses";
+            // 
             // View_courses_dataGridView
             // 
             this.View_courses_dataGridView.AllowUserToAddRows = false;
@@ -613,17 +617,6 @@
             this.View_courses_dataGridView.Size = new System.Drawing.Size(561, 447);
             this.View_courses_dataGridView.TabIndex = 0;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(56, 33);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(210, 36);
-            this.label12.TabIndex = 3;
-            this.label12.Text = "Your Courses";
-            // 
             // Take_attendance_panel
             // 
             this.Take_attendance_panel.Controls.Add(this.Save_attendance_btn);
@@ -635,39 +628,6 @@
             this.Take_attendance_panel.Name = "Take_attendance_panel";
             this.Take_attendance_panel.Size = new System.Drawing.Size(1028, 603);
             this.Take_attendance_panel.TabIndex = 7;
-            // 
-            // Attendance_dataGridView
-            // 
-            this.Attendance_dataGridView.AllowUserToAddRows = false;
-            this.Attendance_dataGridView.AllowUserToDeleteRows = false;
-            this.Attendance_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Attendance_dataGridView.Location = new System.Drawing.Point(44, 94);
-            this.Attendance_dataGridView.Name = "Attendance_dataGridView";
-            this.Attendance_dataGridView.RowHeadersWidth = 51;
-            this.Attendance_dataGridView.RowTemplate.Height = 24;
-            this.Attendance_dataGridView.Size = new System.Drawing.Size(937, 469);
-            this.Attendance_dataGridView.TabIndex = 0;
-            // 
-            // course_name_cmbx
-            // 
-            this.course_name_cmbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.course_name_cmbx.FormattingEnabled = true;
-            this.course_name_cmbx.Location = new System.Drawing.Point(134, 39);
-            this.course_name_cmbx.Name = "course_name_cmbx";
-            this.course_name_cmbx.Size = new System.Drawing.Size(282, 33);
-            this.course_name_cmbx.TabIndex = 5;
-            this.course_name_cmbx.SelectedIndexChanged += new System.EventHandler(this.course_name_cmbx_SelectedIndexChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(39, 44);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 25);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Course:";
             // 
             // Save_attendance_btn
             // 
@@ -681,6 +641,39 @@
             this.Save_attendance_btn.UseVisualStyleBackColor = true;
             this.Save_attendance_btn.Click += new System.EventHandler(this.Save_attendance_btn_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(39, 44);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(89, 25);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Course:";
+            // 
+            // course_name_cmbx
+            // 
+            this.course_name_cmbx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.course_name_cmbx.FormattingEnabled = true;
+            this.course_name_cmbx.Location = new System.Drawing.Point(134, 39);
+            this.course_name_cmbx.Name = "course_name_cmbx";
+            this.course_name_cmbx.Size = new System.Drawing.Size(282, 33);
+            this.course_name_cmbx.TabIndex = 5;
+            this.course_name_cmbx.SelectedIndexChanged += new System.EventHandler(this.course_name_cmbx_SelectedIndexChanged);
+            // 
+            // Attendance_dataGridView
+            // 
+            this.Attendance_dataGridView.AllowUserToAddRows = false;
+            this.Attendance_dataGridView.AllowUserToDeleteRows = false;
+            this.Attendance_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Attendance_dataGridView.Location = new System.Drawing.Point(44, 94);
+            this.Attendance_dataGridView.Name = "Attendance_dataGridView";
+            this.Attendance_dataGridView.RowHeadersWidth = 51;
+            this.Attendance_dataGridView.RowTemplate.Height = 24;
+            this.Attendance_dataGridView.Size = new System.Drawing.Size(937, 469);
+            this.Attendance_dataGridView.TabIndex = 0;
+            // 
             // Attendance_Report_panel
             // 
             this.Attendance_Report_panel.Controls.Add(this.dateTimePicker);
@@ -693,6 +686,25 @@
             this.Attendance_Report_panel.Name = "Attendance_Report_panel";
             this.Attendance_Report_panel.Size = new System.Drawing.Size(1028, 603);
             this.Attendance_Report_panel.TabIndex = 8;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(553, 43);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(414, 30);
+            this.dateTimePicker.TabIndex = 9;
+            // 
+            // ViewAttendance_dataGridView
+            // 
+            this.ViewAttendance_dataGridView.AllowUserToAddRows = false;
+            this.ViewAttendance_dataGridView.AllowUserToDeleteRows = false;
+            this.ViewAttendance_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ViewAttendance_dataGridView.Location = new System.Drawing.Point(44, 94);
+            this.ViewAttendance_dataGridView.Name = "ViewAttendance_dataGridView";
+            this.ViewAttendance_dataGridView.RowHeadersWidth = 51;
+            this.ViewAttendance_dataGridView.RowTemplate.Height = 24;
+            this.ViewAttendance_dataGridView.Size = new System.Drawing.Size(937, 441);
+            this.ViewAttendance_dataGridView.TabIndex = 8;
             // 
             // Save_as_pdf_btn
             // 
@@ -727,30 +739,31 @@
             this.Course_view_attendance_cmbx.TabIndex = 5;
             this.Course_view_attendance_cmbx.SelectedIndexChanged += new System.EventHandler(this.Course_view_attendance_cmbx_SelectedIndexChanged);
             // 
-            // ViewAttendance_dataGridView
+            // panel2
             // 
-            this.ViewAttendance_dataGridView.AllowUserToAddRows = false;
-            this.ViewAttendance_dataGridView.AllowUserToDeleteRows = false;
-            this.ViewAttendance_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ViewAttendance_dataGridView.Location = new System.Drawing.Point(44, 94);
-            this.ViewAttendance_dataGridView.Name = "ViewAttendance_dataGridView";
-            this.ViewAttendance_dataGridView.RowHeadersWidth = 51;
-            this.ViewAttendance_dataGridView.RowTemplate.Height = 24;
-            this.ViewAttendance_dataGridView.Size = new System.Drawing.Size(937, 441);
-            this.ViewAttendance_dataGridView.TabIndex = 8;
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(232, 111);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1028, 588);
+            this.panel2.TabIndex = 9;
             // 
-            // dateTimePicker
+            // pictureBox2
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(553, 43);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(414, 30);
-            this.dateTimePicker.TabIndex = 9;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(301, 54);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(436, 444);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1260, 702);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.Attendance_Report_panel);
             this.Controls.Add(this.Take_attendance_panel);
             this.Controls.Add(this.AddStudent_panel);
@@ -758,7 +771,6 @@
             this.Controls.Add(this.TakeAttendance_btn);
             this.Controls.Add(this.AddCourses_btn);
             this.Controls.Add(this.ViewCourses_btn);
-            this.Controls.Add(this.AssignTeacherCourse_btn);
             this.Controls.Add(this.AddStudentToCourse_btn);
             this.Controls.Add(this.AttendanceReport_btn);
             this.Controls.Add(this.AddTeacher_btn);
@@ -798,6 +810,8 @@
             this.Attendance_Report_panel.ResumeLayout(false);
             this.Attendance_Report_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ViewAttendance_dataGridView)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -809,7 +823,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button AddStudents_btn;
         private System.Windows.Forms.Button AddTeacher_btn;
-        private System.Windows.Forms.Button AssignTeacherCourse_btn;
         private System.Windows.Forms.Button AddCourses_btn;
         private System.Windows.Forms.Button AttendanceReport_btn;
         private System.Windows.Forms.Button AddStudentToCourse_btn;
@@ -861,6 +874,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox Course_view_attendance_cmbx;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

@@ -80,15 +80,8 @@ namespace Attendance_Monitoring_System
                 ViewCourses_btn.Enabled = false;
                 AddStudentToCourse_btn.Enabled = false;
                 TakeAttendance_btn.Enabled = false;
-                AttendanceReport_btn.Enabled = false;
-            }
-            else
-            {
-                AddStudents_btn.Visible = false;
-                AddCourses_btn.Visible = false;
-                AddTeacher_btn.Visible = false;
-                AssignTeacherCourse_btn.Visible = false;
-
+                AttendanceReport_btn.Enabled = false;      
+                
                 dt.Clear();
                 dt = db.read_data("SELECT * FROM Teacher", "");
 
@@ -101,7 +94,13 @@ namespace Attendance_Monitoring_System
                     item.Value = (int)dt.Rows[i][0];
                     Teacher_cmbx.Items.Add(item);
                 }
-                ////////////////////////////////////////////////
+            }
+            else
+            {
+                AddStudents_btn.Visible = false;
+                AddCourses_btn.Visible = false;
+                AddTeacher_btn.Visible = false;
+
                 List<courses> lst = new List<courses>();
 
                 dt.Clear();
@@ -211,7 +210,7 @@ namespace Attendance_Monitoring_System
         {
             DataTable tbl = new DataTable();
 
-            string query = "SELECT s.id, s.name, s.department, s.seat_number FROM Student s JOIN Attendance a ON s.id = a.StudentID WHERE a.CourseID = " + (course_name_cmbx.SelectedItem as ComboboxItem).Value.ToString() + ";";
+            string query = "SELECT s.id, s.name, s.department, s.seat_number FROM Student s JOIN StudentCourses a ON s.id = a.StudentID WHERE a.CourseID = " + (course_name_cmbx.SelectedItem as ComboboxItem).Value.ToString() + ";";
             tbl = db.read_data(query, "");
 
             List<attendance> lst = new List<attendance>();
